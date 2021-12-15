@@ -92,7 +92,10 @@ const UpdateProfile = props => {
         type="url"
         theme_mode= {props.mode}
         />
-        <CustomTextArea theme_mode= {props.mode}/>
+        <CustomTextArea 
+        theme_mode= {props.mode}
+        labelText="Bio"
+        />
         <button className="custom_btn btn__primary" type='button' onClick={() => props.hide(false)}>Back</button>
         <button className="custom_btn btn__info" type='submit'>Update</button>
         </>
