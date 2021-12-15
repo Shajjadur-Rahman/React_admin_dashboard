@@ -27,7 +27,7 @@ const HeaderNav = props => {
     
     const renderNotificationItem = (item, index) => (
 
-        <div  className={hover.hoverItem === index ? `notification__item ${props.color}` : 'notification__item'} key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()}>
+        <div  className={hover.hoveritem === index ? `notification__item ${props.color}` : 'notification__item'} key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()}>
             <i className={item.icon}></i>
             <span>{item.content}</span>
         </div>
