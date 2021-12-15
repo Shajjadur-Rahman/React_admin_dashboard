@@ -98,3 +98,10 @@
         width: 21px;
     }
 }
+
+@media(max-width: 480px){
+    .dropdown__content{
+        width: 300px;
+        right: -36px;
+    }
+}

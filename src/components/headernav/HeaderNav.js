@@ -54,12 +54,6 @@ const HeaderNav = props => {
                     removeHover={removeHoverEffect}
                     logout={props.logOutUser}
                     />
-
-
-                    {/* <Dropdown 
-                       customToggle={() => renderLoggedInUser(loggedInUser, props.mode)}
-                       contentData={userData}
-                       renderItems={(item, index) => renderLoggedInUserMenu(item, index)}/> */}
                     
                 </div>
                 <div className='header__nav__right__item'>

@@ -155,7 +155,6 @@
     }
     .toggle__button {
         background-color: transparent;
-        color: #fff;
         font-size: 20px;
     }
     .header__nav__search {
@@ -164,6 +163,7 @@
     }
     .header__nav__search > input {
         padding: 8px 37px 10px 10px;
+        font-size: 14px;
     }
     .header__nav__search > i {
         font-size: 1.4rem;
