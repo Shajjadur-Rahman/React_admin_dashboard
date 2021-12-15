@@ -1,0 +1,22 @@
+[
+    {
+        "icon": "bx bx-error",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    },
+    {
+        "icon": "bx bx-package",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    },
+    {
+        "icon": "bx bx-cart",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting"
+    },
+    {
+        "icon": "bx bx-error",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+    },
+    {
+        "icon": "bx bx-cart",
+        "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+    }
+]

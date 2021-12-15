@@ -1,0 +1,38 @@
+/* .card__body{
+    overflow: auto;
+} */
+.dashboard_table_warpper{
+    width: 100%;
+    overflow: auto;
+}
+.dashboard_table{
+    width: 100%;
+    border-spacing: 0;
+
+}
+
+.dashboard_table tr th,
+.dashboard_table tr td{
+     text-align: left;
+    text-transform: capitalize;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+
+.dashboard_table tr th{
+    padding-top: 0;
+}
+
+
+@media(max-width: 980px){
+    .dashboard_table{
+        width: 100%;
+    }
+}
+
+
+@media(max-width: 768px){
+    .dashboard_table{
+        width: 980px;
+    }
+}

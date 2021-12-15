@@ -1,0 +1,100 @@
+.auth_container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+.auth_content{
+    width: 400px;
+}
+
+.auth_content form{
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    box-shadow: 1px 3px 9px #000;
+    background: #c1c1c1;
+}
+.auth_content form h2{
+    margin-bottom: 30px;
+}
+
+.auth_content form label{
+    display: block;
+    padding: 10px 0;
+}
+
+.auth_content form .auth_input{
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+.auth_content form .auth_input:last-child{
+    margin-bottom: 30px;
+}
+
+.auth_content form .auth_input input[type='text'],
+.auth_content form .auth_input input[type='email'],
+.auth_content form .auth_input input[type='password']{
+    height: 100%;
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: 0;
+    outline: 0;
+}
+
+.auth_content form .auth_input input[type='text']:focus,
+.auth_content form .auth_input input[type='email']:focus,
+.auth_content form .auth_input input[type='password']:focus{
+    border: 0.5px solid #000;
+}
+
+.auth_content form .auth_form_footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.auth_content form .auth_form_footer .auth_form_footer_txt{
+    width: 70%;
+}
+
+.auth_content form .auth_form_footer .auth_form_footer_txt2{
+    width: 50%;
+}
+
+.auth_content form .auth_form_footer .auth_form_footer_txt a,
+.auth_content form .auth_form_footer .auth_form_footer_txt2 a{
+    color: #0d1be0;
+}
+
+.auth__btn{
+    background: #0f7b8c;
+}
+
+.auth_reset__btn{
+    background: #c53c06;
+}
+
+.auth_reset__btn:hover,
+.auth__btn:hover{
+    box-shadow: 2px 5px 8px #000;
+}
+

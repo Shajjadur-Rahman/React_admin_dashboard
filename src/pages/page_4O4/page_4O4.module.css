@@ -1,0 +1,26 @@
+.container_4O4{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ddd;
+}
+
+.container_4O4 .message_4O4{
+    box-shadow: 1px 3px 9px #000;
+    background: #c1c1c1;
+    padding: 20px 50px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    color: rgb(26, 119, 32);
+}
+
+@media(max-width: 1280px){
+    .container_4O4 .message_4O4{
+        margin: 0 20px;
+    }
+}

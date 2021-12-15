@@ -1,0 +1,19 @@
+.layout{
+    color: var(--text-white);
+}
+
+.layout__content{
+    padding-left: var(--sidebar-width);
+
+}
+
+.layout__content__main{
+    height: calc(100vh - 180px);
+    overflow: auto;
+}
+
+@media(max-width: 1280px){
+    .layout__content{
+        padding-left: 0;
+    }
+}
