@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Table from '../components/table/Table'
 import Badge from './../components/badge/Badge';
 import {connect} from 'react-redux'
@@ -132,10 +132,12 @@ const latestOrders = {
   
 
 const Order = props => {
+    const [currColor, setcurrColor] = useState('blue-color')
 
     useEffect(() => {
         document.title = "Orders"
-    }, [])
+        if(props.hover_bg !== null) setcurrColor(props.hover_bg)
+    }, [props.hover_bg])
 
     const {hover, setHoverEffect, removeHoverEffect} = HoverEffect()
     const renderOrderHead = (item, index) => (
@@ -143,7 +145,7 @@ const Order = props => {
       )
 
     const renderOrderBody = (item, index) => (
-        <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${props.color ? props.color : 'blue-color'}` : ''}>
+        <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${currColor}` : ''}>
             <td>{item.id}</td>
             <td>{item.user}</td>
             <td>{item.price}</td>
@@ -171,6 +173,6 @@ const Order = props => {
     )
 }
 const mapStateToProps = state => ({
-    color: state.ThemeReducer.color
+    hover_bg: state.ThemeReducer.hover_bg
 })
 export default connect(mapStateToProps)(Order)

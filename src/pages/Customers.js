@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Table from '../components/table/Table'
 import customers from '../assets/jsonData/customers.json'
 import { connect } from 'react-redux'
@@ -17,16 +17,17 @@ const customertHead = [
 
 
 const Customers = props => {
-
+    const [currColor, setcurrColor] = useState('blue-color')
     useEffect(() => {
         document.title = "Customers"
-    }, [])
+        if(props.hover_bg !== null) setcurrColor(props.hover_bg)
+    }, [props.hover_bg])
 
     const {hover, setHoverEffect, removeHoverEffect} = HoverEffect()
 
     const customerRenderHead = (item, index) => <th key={index}>{item}</th>
     const customerRenderBody = (item, index) => (
-        <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${props.color ? props.color : 'blue-color'}` : ''}>
+        <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${currColor}` : ''}>
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.email}</td>
@@ -54,6 +55,6 @@ const Customers = props => {
     )
 }
 const mapStateToProps = state => ({
-    color: state.ThemeReducer.color
+    hover_bg: state.ThemeReducer.hover_bg
 })
 export default connect(mapStateToProps)(Customers)

@@ -13,6 +13,7 @@
 
 .dropdown__toggle > i {
     font-size: 2.5rem;
+    color: var(--txt-color);
 }
 
 .dropdown__toggle > i.icon_dark_mode{
@@ -34,6 +35,9 @@
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
     font-size: 0.8rem;
+    background-color: var(--main-color);
+    color: var(--txt-white);
+    /* Ok */
 }
 
 .dropdown__content{
@@ -42,7 +46,6 @@
     max-width: 400px;
     top: calc(100% + 5px);
     right: 0;
-    background-color: var(--main-bg);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
     -webkit-border-radius: var(--border-radius);
@@ -61,6 +64,8 @@
     -ms-transition: transform 0.3s ease 0s;
     -o-transition: transform 0.3s ease 0s;
     overflow: hidden;
+    background-color: var(--main-bg);
+        /* Ok */
 }
 
 .dropdown__content.active {
@@ -76,9 +81,6 @@
     -o-transition: transform 0.5s var(--transition-cubic);
 }
 
-.dropdown__content.content_mode_dark{
-    background-color: var(--main-bg-dark);
-}
 
 
 .dropdown__footer{

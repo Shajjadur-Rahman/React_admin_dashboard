@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Dropdown from '../dropdown/Dropdown'
 import './headernav.css'
 import notifications from '../../assets/jsonData/notifications.json'
@@ -16,6 +16,11 @@ import {logOutUser} from '../../sevices/Actions/AuthActions'
 
 
 const HeaderNav = props => {
+    const [currColor, setcurrColor] = useState('blue-color')
+
+    useEffect(() => {
+        if(props.hover_bg !== null) setcurrColor(props.hover_bg)
+    }, [props.hover_bg])
 
     const { hover, setHoverEffect, removeHoverEffect } = HoverEffect()
     const badge = 12
@@ -27,7 +32,7 @@ const HeaderNav = props => {
     
     const renderNotificationItem = (item, index) => (
 
-        <div  className={hover.hoveritem === index ? `notification__item ${props.color}` : 'notification__item'} key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()}>
+        <div  className={hover.hoveritem === index ? `notification__item ${currColor}` : 'notification__item'} key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()}>
             <i className={item.icon}></i>
             <span>{item.content}</span>
         </div>
@@ -46,6 +51,7 @@ const HeaderNav = props => {
            <div className='header__nav__right'>
                 <div className='header__nav__right__item'>
                     <LoggedInUserMenu 
+                    currColor={currColor}
                     mode={props.mode} 
                     color={props.color}
                     user={loggedInUser}
@@ -74,6 +80,6 @@ const HeaderNav = props => {
 }
 const mapStateToProps = state => ({
     mode: state.ThemeReducer.mode,
-    color: state.ThemeReducer.color,
+    hover_bg: state.ThemeReducer.hover_bg,
 })
 export default connect(mapStateToProps, {logOutUser})(HeaderNav)

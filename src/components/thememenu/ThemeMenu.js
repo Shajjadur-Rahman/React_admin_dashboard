@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import {setMode, setColor} from '../../sevices/Actions/ThemeActions'
 import { connect } from 'react-redux'
 import './thememenu.css'
@@ -69,9 +69,6 @@ const click = (content_ref, toggle_ref) => {
 
 
 const ThemeMenu = ({
-    mode,
-    mode_id,
-    color_id,
     setMode,
     setColor,
 }) => {
@@ -82,6 +79,31 @@ const ThemeMenu = ({
     click(menu_ref, menu_toggle_ref)
     const setActiveMenu = () => menu_toggle_ref.current.classList.add('active')
     const setCloseMenu = () => menu_ref.current.classList.remove('active')
+
+    const [currMode, setcurrMode] = useState('light')
+    const [currColor, setcurrColor] = useState('blue')
+
+    const set_mode = mode => {
+        setcurrMode(mode.id)
+        setMode(mode.class)
+    }
+
+    const set_color = color => {
+        setcurrColor(color.id)
+        setColor(color.class, color.background)
+    }
+
+    useEffect(() => {
+        const themeClass = mode_settings.find(e => e.class === localStorage.getItem('themeMode', 'theme-mode-light'))
+
+        const colorClass = color_settings.find(e => e.class === localStorage.getItem('colorMode', 'theme-color-blue'))
+        console.log('themeClass' , themeClass)
+        console.log('colorClass', colorClass)
+
+        if (themeClass !== undefined) setcurrMode(themeClass.id)
+
+        if (colorClass !== undefined) setcurrColor(colorClass.id)
+    }, [])
  
 
     return (
@@ -89,7 +111,7 @@ const ThemeMenu = ({
             <button className='dropdown__toggle' ref={menu_toggle_ref} onClick={() => setActiveMenu()}>
                 <i className='bx bx-dots-vertical-rounded bx-burst-hover'></i>
             </button>
-            <div className= 'theme__menu' ref={menu_ref} style={{backgroundColor: mode === 'theme-mode-dark' ? '#2d2d2d' : ''}}>
+            <div className= 'theme__menu' ref={menu_ref}>
                 <h4>Theme settings</h4>
                 <button className='theme__menu__close' onClick={() => setCloseMenu()}>
                     <i className='bx bx-x bx-burst-hover'></i>
@@ -99,8 +121,8 @@ const ThemeMenu = ({
                     <ul className='mode__list'>
                         {
                             mode_settings.map((item, index) => (
-                                <li key={index} onClick={() => setMode(item)}>
-                                    <div className={`mode__list__color ${item.background} ${item.id === mode_id ? 'active' : ''}`}>
+                                <li key={index} onClick={() => set_mode(item)}>
+                                    <div className={`mode__list__color ${item.background} ${item.id === currMode ? 'active' : ''}`}>
                                         <i className='bx bx-check'></i>
                                     </div>
                                     <span>{item.name}</span>
@@ -115,8 +137,8 @@ const ThemeMenu = ({
                     <ul className='mode__list'>
                         {
                             color_settings.map((item, index) => (
-                                <li key={index} onClick={() => setColor(item)}>
-                                    <div className={`mode__list__color ${item.background} ${item.id === color_id ? 'active' : ''}`}>
+                                <li key={index} onClick={() => set_color(item)}>
+                                    <div className={`mode__list__color ${item.background} ${item.id === currColor ? 'active' : ''}`}>
                                         <i className='bx bx-check'></i>
                                     </div>
                                     <span>{item.name}</span>
@@ -131,8 +153,6 @@ const ThemeMenu = ({
 }
 
 const mapStateToProps = state => ({
-    mode: state.ThemeReducer.mode,
-    mode_id: state.ThemeReducer.mode_id,
-    color_id: state.ThemeReducer.color_id,
+
 })
 export default connect(mapStateToProps, {setMode, setColor})(ThemeMenu)

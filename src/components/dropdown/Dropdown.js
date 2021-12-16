@@ -21,12 +21,11 @@ const Dropdown = props => {
     const dropdown_content_element = useRef(null)
     click(dropdown_content_element, dropdown_toggle_btn)
 
-
     return (
         <div className='dropdown'>
             <button ref={dropdown_toggle_btn} className='dropdown__toggle'>
                 {
-                    props.icon ? <i className={props.icon} style={{color: props.mode === 'theme-mode-dark' ? '#fff' : ''}}></i> : ''
+                    props.icon ? <i className={props.icon}></i> : ''
                 }
                 {
                     props.badge ? <span className={props.color ? `dropdown__toggle__badge ${props.color}` : 'dropdown__toggle__badge blue-color'}>{props.badge}</span> : ''
@@ -35,7 +34,7 @@ const Dropdown = props => {
                     props.customToggle ? props.customToggle() : ''
                 }
             </button>
-            <div ref={dropdown_content_element} className='dropdown__content'style={{color: props.mode === 'theme-mode-dark' ? '#fff' : '', background: props.mode === 'theme-mode-dark' ? 'rgb(45, 45, 45)' : ''}}>
+            <div ref={dropdown_content_element} className='dropdown__content'>
                 {
                     props.contentData && props.renderItems ? props.contentData.map((item, index) => props.renderItems(item, index)) : ''
                 }

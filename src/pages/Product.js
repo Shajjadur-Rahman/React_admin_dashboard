@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Table from '../components/table/Table'
 import products from '../assets/jsonData/products.json'
 import { connect } from 'react-redux'
@@ -11,13 +11,18 @@ const productHead = ['', 'Product Id', 'Product', 'Price', 'Discount', 'Stock QT
 
 
 const Product = props => {
+    const [currColor, setcurrColor] = useState('blue-color')
     useEffect(() => {
         document.title = "Products"
-    }, [])
+        if(props.hover_bg !== null) setcurrColor(props.hover_bg)
+    }, [props.hover_bg])
+
+
+    
     const {hover, setHoverEffect, removeHoverEffect} = HoverEffect()
     const renderProductHead = (item, index) => <th key={index}>{item}</th>
     const renderProductBody = (item, index) => (
-        <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${props.color ? props.color : 'blue-color'}` : ''}>
+        <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${currColor}` : ''}>
             <td>{item.id}</td>
             <td>{item.product_id}</td>
             <td>{item.product_name}</td>
@@ -45,6 +50,6 @@ const Product = props => {
     )
 }
 const mapStateToProps = state => ({
-    color: state.ThemeReducer.color
+    hover_bg: state.ThemeReducer.hover_bg
 })
 export default connect(mapStateToProps)(Product)

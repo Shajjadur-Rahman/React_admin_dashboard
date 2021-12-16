@@ -199,11 +199,11 @@ const orderStatus = {
 
 
 const Dashboard = props => {
-
-  
+  const [currColor, setcurrColor] = useState('blue-color')
   useEffect(() => {
     document.title = "Dashboard home"
-}, [])
+    if(props.hover_bg !== null) setcurrColor(props.hover_bg)
+}, [props.hover_bg])
 
 
   const [customerHover, setCustomerHover] = useState({
@@ -281,7 +281,7 @@ const Dashboard = props => {
                       <tbody>
                         {
                           topCustomer.tBody.map((item, index) => (
-                            <tr key={index} onMouseEnter={() => setHover(index)} onMouseLeave={() => removeHover()} className={customerHover.hoverTr === index ? `${props.color ? props.color : 'blue-color'}` : ''}>
+                            <tr key={index} onMouseEnter={() => setHover(index)} onMouseLeave={() => removeHover()} className={customerHover.hoverTr === index ? `${currColor}` : ''}>
                               <td>{item.username}</td>
                               <td>{item.order}</td>
                               <td>{item.price}</td>
@@ -311,7 +311,7 @@ const Dashboard = props => {
                       </thead>
                       <tbody>
                         {latestOrders.tBody.map((item, index) => (
-                          <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${props.color ? props.color : 'blue-color'}` : ''}>
+                          <tr key={index} onMouseEnter={() => setHoverEffect(index)} onMouseLeave={() => removeHoverEffect()} className={hover.hoveritem === index ? `${currColor}` : ''}>
                             <td>{item.id}</td>
                             <td>{item.user}</td>
                             <td>{item.date}</td>
@@ -335,6 +335,6 @@ const Dashboard = props => {
     )
 }
 const mapStateToProps = state => ({
-  color: state.ThemeReducer.color
+  hover_bg: state.ThemeReducer.hover_bg
 })
 export default connect(mapStateToProps)(Dashboard)

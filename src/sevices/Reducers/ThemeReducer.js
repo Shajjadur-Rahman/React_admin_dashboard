@@ -2,15 +2,13 @@ import * as actinType from '../Types'
 
 
 const mode = localStorage.getItem('themeMode')
-const mode_id = localStorage.getItem('mode_id')
 const color = localStorage.getItem('colorMode')
-const color_id = localStorage.getItem('color_id')
+const hover_bg = localStorage.getItem('hoverBg')
 
 const initialState = {
     mode: mode,
-    mode_id: mode_id,
     color: color,
-    color_id: color_id
+    hover_bg: hover_bg
 }
 
 const ThemeReducer = (state = initialState, action) => {
@@ -18,14 +16,13 @@ const ThemeReducer = (state = initialState, action) => {
         case actinType.SET_MODE:
             return {
                 ...state,
-                mode: action.payload.class,
-                mode_id: action.payload.id
+                mode: action.payload,
             }
         case actinType.SET_COLOR:
             return {
                 ...state,
-                color: action.payload.background,
-                color_id: action.payload.id
+                color: action.payload,
+                hover_bg: action.background
             }
         default:
             return state

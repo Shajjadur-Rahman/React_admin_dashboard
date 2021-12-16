@@ -5,6 +5,7 @@
     top: 0;
     left: 0;
     box-shadow: var(--box-shadow);
+    background-color: var(--main-bg);
 }
 
 .sidebar__logo{
@@ -83,8 +84,13 @@
     -moz-border-radius: var(--border-radius);
     -ms-border-radius: var(--border-radius);
     -o-border-radius: var(--border-radius);
-    color: var(--txt-white);
     box-shadow: 2px 2px 5px 0.8px #a49f9f;
+    background-image: linear-gradient(
+        to right,
+        var(--main-color),
+        var(--second-color)
+    );
+    color: var(--txt-white);
 }
 
 

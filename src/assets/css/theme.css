@@ -10,6 +10,7 @@
     --second-bg: var(--second-bg-dark);
     --txt-color: var(--txt-color-dark);
     --box-shadow: var(--box-shadow-dark);
+    color: #fff;
 }
 
 .theme-color-blue {

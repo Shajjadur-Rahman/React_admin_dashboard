@@ -9,13 +9,9 @@
     position: sticky;
     top: 0;
     z-index: 200;
-    /* background-color: var(--main-bg); */
 }
 
-/* .header__nav.nav__dark{
-    background-color: var(--main-bg-dark);
-    color: var(--taxt-white);
-} */
+
 .toggle__button{
     background-color: transparent;
     font-size: 30px;
@@ -36,6 +32,7 @@
     -o-border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     overflow: hidden;
+    background-color: var(--main-bg);
 }
 
 .header__nav__search > input {
@@ -48,6 +45,7 @@
     -ms-border-radius: var(--border-radius);
     -o-border-radius: var(--border-radius);
     color: var(--txt-color);
+    background-color: var(--main-bg);
     font-size: 1rem;
 }
 
@@ -72,6 +70,7 @@
 .header__nav__right{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .header__nav__right__item ~ .header__nav__right__item{
