@@ -2,8 +2,8 @@ import React, {useRef} from 'react'
 import './dropdown.css'
 import {connect} from 'react-redux'
 
-const click = (content_ref, toggle_ref) => {
-    document.addEventListener('mousedown', (even) => {
+const clickOutSide = (content_ref, toggle_ref) => {
+    document.addEventListener('click', (even) => {
         if(toggle_ref.current && toggle_ref.current.contains(even.target)){
             content_ref.current.classList.toggle('active')
         }else{
@@ -19,7 +19,7 @@ const Dropdown = props => {
 
     const dropdown_toggle_btn = useRef(null)
     const dropdown_content_element = useRef(null)
-    click(dropdown_content_element, dropdown_toggle_btn)
+    clickOutSide(dropdown_content_element, dropdown_toggle_btn)
 
     return (
         <div className='dropdown'>
