@@ -26,8 +26,9 @@ const Layout = ({mode, color, login}) => {
         const colorClass = localStorage.getItem('colorMode')
         if(themeClass !== undefined) setcurrMode(themeClass)
         if(colorClass !== undefined) setcurrColor(colorClass)
-    }, [color, mode])
 
+    }, [color, mode])
+    console.log('Rendered')
 
     return (
         <BrowserRouter>

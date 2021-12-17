@@ -98,3 +98,8 @@
     box-shadow: 2px 5px 8px #000;
 }
 
+@media(max-width: 480px){
+    .auth_content{
+        margin: 0 10px;
+    }
+}

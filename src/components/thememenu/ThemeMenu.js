@@ -54,8 +54,8 @@ const color_settings = [
     },
 ]
 
-const click = (content_ref, toggle_ref) => {
-    document.addEventListener('mousedown', (even) => {
+const clickOutSide = (content_ref, toggle_ref) => {
+    document.addEventListener('click', (even) => {
         if(toggle_ref.current && toggle_ref.current.contains(even.target)){
             content_ref.current.classList.toggle('active')
         }else{
@@ -76,8 +76,9 @@ const ThemeMenu = ({
 
     const menu_ref = useRef(null)
     const menu_toggle_ref = useRef(null)
-    click(menu_ref, menu_toggle_ref)
-    const setActiveMenu = () => menu_toggle_ref.current.classList.add('active')
+    clickOutSide(menu_ref, menu_toggle_ref)
+
+    // const setActiveMenu = () => menu_ref.current.classList.add('active')
     const setCloseMenu = () => menu_ref.current.classList.remove('active')
 
     const [currMode, setcurrMode] = useState('light')
@@ -106,7 +107,7 @@ const ThemeMenu = ({
 
     return (
         <div>
-            <button className='dropdown__toggle' ref={menu_toggle_ref} onClick={() => setActiveMenu()}>
+            <button className='dropdown__toggle' ref={menu_toggle_ref}>
                 <i className='bx bx-dots-vertical-rounded bx-burst-hover'></i>
             </button>
             <div className= 'theme__menu' ref={menu_ref}>
