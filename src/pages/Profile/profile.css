@@ -82,7 +82,7 @@
 }
 
 .user__profile__content h3 a{
-    color: var(--main-color)
+    color: #349eff;
 }
 .user__btn_wrapper{
     height: 100%;

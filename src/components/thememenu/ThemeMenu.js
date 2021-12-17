@@ -97,8 +97,6 @@ const ThemeMenu = ({
         const themeClass = mode_settings.find(e => e.class === localStorage.getItem('themeMode', 'theme-mode-light'))
 
         const colorClass = color_settings.find(e => e.class === localStorage.getItem('colorMode', 'theme-color-blue'))
-        console.log('themeClass' , themeClass)
-        console.log('colorClass', colorClass)
 
         if (themeClass !== undefined) setcurrMode(themeClass.id)
 
