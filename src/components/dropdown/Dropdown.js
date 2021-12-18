@@ -1,29 +1,30 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState, useEffect} from 'react'
 import './dropdown.css'
 import {connect} from 'react-redux'
 
-const clickOutSide = (content_ref, toggle_ref) => {
-    document.addEventListener('click', (even) => {
-        if(toggle_ref.current && toggle_ref.current.contains(even.target)){
-            content_ref.current.classList.toggle('active')
-        }else{
-            if(content_ref.current && !content_ref.current.contains(even.target)){
-                content_ref.current.classList.remove('active')
-            }
-        }
-    })
-}
 
 
 const Dropdown = props => {
 
-    const dropdown_toggle_btn = useRef(null)
-    const dropdown_content_element = useRef(null)
-    clickOutSide(dropdown_content_element, dropdown_toggle_btn)
+    const [isOpen, setIsOpen] = useState(false)
+    const ref = useRef()
+
+    useEffect(() => {
+        const clickOutSide = event => {
+            if(isOpen && ref.current && !ref.current.contains(event.target)){
+                setIsOpen(false)
+            }
+           
+        }
+        document.addEventListener('click', clickOutSide)
+        return () => {
+            document.removeEventListener('click', clickOutSide)
+        }
+    }, [isOpen])
 
     return (
-        <div className='dropdown'>
-            <button ref={dropdown_toggle_btn} className='dropdown__toggle'>
+        <div className='dropdown' ref={ref}>
+            <button className='dropdown__toggle' onClick={() => setIsOpen(!isOpen)}>
                 {
                     props.icon ? <i className={props.icon}></i> : ''
                 }
@@ -34,7 +35,7 @@ const Dropdown = props => {
                     props.customToggle ? props.customToggle() : ''
                 }
             </button>
-            <div ref={dropdown_content_element} className='dropdown__content'>
+            <div className={isOpen ? 'dropdown__content active' : 'dropdown__content'}>
                 {
                     props.contentData && props.renderItems ? props.contentData.map((item, index) => props.renderItems(item, index)) : ''
                 }

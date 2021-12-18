@@ -28,7 +28,6 @@ const Layout = ({mode, color, login}) => {
         if(colorClass !== undefined) setcurrColor(colorClass)
 
     }, [color, mode])
-    console.log('Rendered')
 
     return (
         <BrowserRouter>

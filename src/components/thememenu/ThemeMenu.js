@@ -54,18 +54,6 @@ const color_settings = [
     },
 ]
 
-const clickOutSide = (content_ref, toggle_ref) => {
-    document.addEventListener('click', (even) => {
-        if(toggle_ref.current && toggle_ref.current.contains(even.target)){
-            content_ref.current.classList.toggle('active')
-        }else{
-            if(content_ref.current && !content_ref.current.contains(even.target)){
-                content_ref.current.classList.remove('active')
-            }
-        }
-    })
-}
-
 
 
 const ThemeMenu = ({
@@ -73,13 +61,22 @@ const ThemeMenu = ({
     setColor,
 }) => {
 
+    const [isOpen, setIsOpen] = useState(false)
+    const ref = useRef()
 
-    const menu_ref = useRef(null)
-    const menu_toggle_ref = useRef(null)
-    clickOutSide(menu_ref, menu_toggle_ref)
+    useEffect(() => {
+        const clickOutSide = event => {
+            if(isOpen && ref.current && !ref.current.contains(event.target)){
+                setIsOpen(false)
+            }
+           
+        }
+        document.addEventListener('click', clickOutSide)
+        return () => {
+            document.removeEventListener('click', clickOutSide)
+        }
+    }, [isOpen])
 
-    // const setActiveMenu = () => menu_ref.current.classList.add('active')
-    const setCloseMenu = () => menu_ref.current.classList.remove('active')
 
     const [currMode, setcurrMode] = useState('light')
     const [currColor, setcurrColor] = useState('blue')
@@ -106,13 +103,13 @@ const ThemeMenu = ({
  
 
     return (
-        <div>
-            <button className='dropdown__toggle' ref={menu_toggle_ref}>
+        <div  ref={ref}>
+            <button className='dropdown__toggle' onClick={() => setIsOpen(true)}>
                 <i className='bx bx-dots-vertical-rounded bx-burst-hover'></i>
             </button>
-            <div className= 'theme__menu' ref={menu_ref}>
+            <div className={isOpen ? 'theme__menu active' : 'theme__menu'}>
                 <h4>Theme settings</h4>
-                <button className='theme__menu__close' onClick={() => setCloseMenu()}>
+                <button className='theme__menu__close' onClick={() => setIsOpen(false)}>
                     <i className='bx bx-x bx-burst-hover'></i>
                 </button>
                 <div className='theme__menu__select'>

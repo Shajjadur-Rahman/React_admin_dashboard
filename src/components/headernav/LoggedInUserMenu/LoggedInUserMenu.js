@@ -1,19 +1,6 @@
-import React, {useRef} from 'react'
+import React, {useRef, useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
 
-
-
-const click = (content_ref, toggle_ref) => {
-    document.addEventListener('mousedown', (even) => {
-        if(toggle_ref.current && toggle_ref.current.contains(even.target)){
-            content_ref.current.classList.toggle('active')
-        }else{
-            if(content_ref.current && !content_ref.current.contains(even.target)){
-                content_ref.current.classList.remove('active')
-            }
-        }
-    })
-}
 
 
 const renderLoggedInUser = (user, mode) => (
@@ -29,19 +16,33 @@ const renderLoggedInUser = (user, mode) => (
 
 const LoggedInUserMenu = props => {
 
-    const dropdown_toggle_btn = useRef(null)
-    const dropdown_content_element = useRef(null)
-    click(dropdown_content_element, dropdown_toggle_btn)
+    const [isOpen, setIsOpen] = useState(false)
+    const ref = useRef()
+
+    useEffect(() => {
+        const clickOutSide = event => {
+            if(isOpen && ref.current && !ref.current.contains(event.target)){
+                setIsOpen(false)
+            }
+           
+        }
+        document.addEventListener('click', clickOutSide)
+        return () => {
+            document.removeEventListener('click', clickOutSide)
+        }
+    }, [isOpen])
+
+
 
     const history = useHistory()
 
     return (
-        <div className='dropdown'>
-            <button ref={dropdown_toggle_btn} className='dropdown__toggle'>
+        <div className='dropdown' ref={ref}>
+            <button className='dropdown__toggle' onClick={() => setIsOpen(!isOpen)}>
            { renderLoggedInUser(props.user, props.mode)}
            </button>
 
-                <div ref={dropdown_content_element} className='dropdown__content'>
+                <div className={isOpen ? 'dropdown__content active' : 'dropdown__content'}>
                         <div onClick={() => history.push('/profile')} hoveritem='1' className={props.hover.hoveritem === 1 ? `notification__item ${props.currColor}` : 'notification__item'} onMouseEnter={() => props.setHover(1)} onMouseLeave={() => props.removeHover(1)}>
                             <i className='bx bx-user'></i>
                             <span>Profile</span>
