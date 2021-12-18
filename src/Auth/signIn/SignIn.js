@@ -20,7 +20,7 @@ const SignIn = ({loginUser}) => {
                     <div className={style.auth_input}>
                         <input type='email' name='email' id='email' value={loginData.email} onChange={onChangeHandler}/>
                     </div>
-                    <label htmlFor='password'><i className="fas fa-key"></i> {errors.emailError ? <span style={{color: 'red'}}>{errors.passError}</span>: 'Password'}</label>
+                    <label htmlFor='password'><i className="fas fa-key"></i> {errors.passError ? <span style={{color: 'red'}}>{errors.passError}</span>: 'Password'}</label>
                     <div className={style.auth_input}>
                         <input type='password' name='password' id='password' value={loginData.password} onChange={onChangeHandler}/>
                     </div>

@@ -11,7 +11,7 @@ if(!values.password){
     errors.password = "Password is required !"
 }
 if(values.password.length < 6){
-    errors.password2 = "Password needs to be 6 charactera or more !"
+    errors.password = "Password needs to be 6 charactera or more !"
 }
 
 
