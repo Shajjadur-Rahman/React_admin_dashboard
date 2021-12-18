@@ -6,10 +6,12 @@
     align-items: center;
     justify-content: center;
     color: #000;
+    overflow-y: auto;
 }
 
 .auth_content{
     width: 400px;
+    min-height: max-content;
 }
 
 
@@ -23,6 +25,7 @@
     -o-border-radius: 5px;
     box-shadow: 1px 3px 9px #000;
     background: #c1c1c1;
+
 }
 .auth_content form h2{
     margin-bottom: 30px;

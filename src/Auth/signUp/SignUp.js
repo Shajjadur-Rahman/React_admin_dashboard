@@ -12,16 +12,6 @@ const SignUp = () => {
             <form onSubmit={handleSubmit}>
                 <h2><i className="fas fa-user"></i> Sign Up</h2>
 
-                <label htmlFor='firstName'><i className="fas fa-file-signature"></i> {errors.firstName ? <span style={{color: 'red'}}>{errors.firstName}</span>: 'First name'}</label>
-                <div className={style.auth_input}>
-                    <input type='text' name='firstName' id='firstName' value={signUpData.firstName} onChange={onChangeHandler}/>
-                </div>
-
-                <label htmlFor='lastName'><i className="fas fa-file-signature"></i> {errors.lastName ? <span style={{color: 'red'}}>{errors.lastName}</span>: 'Last name'}</label>
-                <div className={style.auth_input}>
-                    <input type='text' name='lastName' id='lastName' value={signUpData.lastName} onChange={onChangeHandler}/>
-                </div>
-
                 <label htmlFor='username'><i className="fas fa-file-signature"></i> {errors.username ? <span style={{color: 'red'}}>{errors.username}</span>: 'Username'}</label>
                 <div className={style.auth_input}>
                     <input type='text' name='username' id='username' value={signUpData.username} onChange={onChangeHandler}/>
