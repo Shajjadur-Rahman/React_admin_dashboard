@@ -20,11 +20,8 @@ const Layout = ({mode, color, login}) => {
     const [currMode, setcurrMode] = useState('theme-mode-light')
     const [currColor, setcurrColor] = useState('theme-color-blue')
 
-    const toggleHide = () => {
-        setHide(!hide)
+    const toggleHide = () => setHide(!hide)
         
-    }
-
 
     useEffect(() => {
         const themeClass = localStorage.getItem('themeMode')
@@ -34,7 +31,6 @@ const Layout = ({mode, color, login}) => {
 
     }, [color, mode])
 
-    console.log('Render')
     const getSidebarClass = hide ? 'mobile_sisebar' : 'sidebar'
     return (
         <BrowserRouter>
