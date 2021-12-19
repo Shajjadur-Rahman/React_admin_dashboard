@@ -40,7 +40,7 @@ const HeaderNav = props => {
 
     return (
         <div className='header__nav'>
-            <button className='toggle__button' onClick={() => props.toggleHide()}>&#9776;</button>   
+            <button className='toggle__button' onClick={() => props.setHide(true)}>&#9776;</button>   
            <div className='header__nav__search'>
                <input type='text' className={props.mode === 'theme-mode-dark' ? 'dark_mode_input' : ''} placeholder='Search here....' />
                <i className='bx bx-search'></i>

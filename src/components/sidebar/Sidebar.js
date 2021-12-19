@@ -21,13 +21,13 @@ const Sidebar = props => {
                 </div>
             </Link>
             <div className='close__btn_wapper'>
-                <button className='close__btn' onClick={() => props.setHide(false)}>
+                <button className='close__btn' onClick={props.hide ? () => props.setHide(false) : null}>
                 <i className="bx bx-x bx-burst-hover"></i>
                 </button>
             </div>
             {
                 sidebar_nav_items.map((item, index) => (
-                    <Link to={item.route} key={index} onClick={() => props.setHide(false)}>
+                    <Link to={item.route} key={index} onClick={props.hide ? () => props.setHide(false) : null}>
                         <SidebarItem 
                             title={item.display_name}
                             icon={item.icon}
