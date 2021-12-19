@@ -20,7 +20,7 @@ if(!values.email){
 if(!values.password){
     errors.password = "Password is required !"
 }else if(values.password.length < 6){
-    errors.password = "Password needs to be 6 charactera or more !"
+    errors.password = "Password needs to be 6 characters or more !"
 }
 
 if(!values.password2){
@@ -28,7 +28,7 @@ if(!values.password2){
 }else if(values.password2 !== values.password){
     errors.password2 = "Password didn't match !"
 }else if(values.password.length < 6){
-    errors.password2 = "Password needs to be 6 charactera or more !"
+    errors.password2 = "Password needs to be 6 characters or more !"
 }
 
 
