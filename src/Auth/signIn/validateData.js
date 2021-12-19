@@ -10,7 +10,7 @@ if(!values.email){
 if(!values.password){
     errors.password = "Password is required !"
 }
-if(values.password.length < 6){
+if(values.password.length < 6 && values.password.length > 0){
     errors.password = "Password needs to be 6 characters or more !"
 }
 

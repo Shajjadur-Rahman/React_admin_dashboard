@@ -41,11 +41,11 @@
 
 .close__btn_wapper .close__btn{
     font-size: 30px;
-    color: #fff;
     background-color: transparent;
     position: absolute;
     right: 40px;
     top: 30px;
+    color: #fff;
 }
 
 .sidebar__item{
@@ -119,6 +119,9 @@
     padding-left: 30%;
     color: #fff;
 }
+
+
+
 @media(max-width: 1280px){
     .sidebar{
         z-index: 1000;
@@ -141,3 +144,4 @@
     display: block;
 }
 }
+
